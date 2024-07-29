@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Scoring Project</title>
+    <style>
+
+        input{
+            width : 400px;
+            margin: 10px 10px;
+        }
+        /* #LastNotableActivity{
+            width: 1200px;
+        } */
+	.label{
+		margin: 10px 10px;
+	}
+        button{
+            width: 70px;
+            margin: 10px 10px;
+        }
+        h3{
+            margin:10px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Lead Scoring Prediction</h1>
+        <form action="{{ url_for('predict')}}" method="post">
+            <input type="text" name="Total time spent" placeholder="Total time spent on website" required="required" />
+            <br>
+		<label for="Lead Origin" class="label">Lead Origin:</label> 
+            <select name = "Lead Origin" id = "Lead Origin" required = "required" class="select">
+		<option value = "Landing Page Submission">Landing Page Submission</option>
+		<option value = "API">API</option>
+		<option value = "Lead Add Form">Lead Add Form</option>
+		<option value = "Lead Import">Lead Import</option>
+		<option value = "Quick Add Form">Quick Add Form</option>
+		<option value = "Others">Others</option>
+		</select>
+		<br>
+            <br>
+            <label for="Lead Source" class="label">Lead Source:</label> 
+		<select name = "Lead Source" id = "Lead Source" required = "required" class="select">
+			<option value = "Google">Google</option>
+			<option value = "Direct Traffic">Direct Traffic</option>
+			<option value = "Olark Chat">Olark Chat</option>
+			<option value = "Organic Search">Organic Search</option>
+			<option value = "Reference">Reference</option>
+			<option value = "Welingak Website">Welingak Website</option>
+			<option value = "Referral Sites">Referral Sites</option>
+			<option value = "Facebook">Facebook</option>
+			<option value = "bing">bing</option>
+			<option value = "Click2call">Click2call</option>
+			<option value = "Press_Release">Press_Release</option>
+			<option value = "Social Media">Social Media</option>
+			<option value = "Live Chat">Live Chat</option>
+			<option value = "youtubechannel">youtubechannel</option>
+			<option value = "testone">testone</option>
+			<option value = "Pay per Click Ads">Pay per Click Ads</option>
+			<option value = "welearnblog_Home">welearnblog_Home</option>
+			<option value = "WeLearn">WeLearn</option>
+			<option value = "blog">blog</option>
+			<option value = "NC_EDM">NC_EDM</option>
+			<option value = "Others">Others</option>
+		</select>
+            <br>
+            <input type="text" name="Do not Email" placeholder="Do not Email?- Yes or No" required="required">
+            <br>
+            <label for="Last Activity" class="label">Last Activity:</label> 
+		<select name = "Last Activity" id = "Last Activity" required = "required" class="select">
+			<option value = "Email Opened">Email Opened</option>
+			<option value = "SMS Sent">SMS Sent</option>
+			<option value = "Olark Chat Conversation">Olark Chat Conversation</option>
+			<option value = "Page Visited on Website">Page Visited on Website</option>
+			<option value = "Converted to Lead">Converted to Lead</option>
+			<option value = "Email Bounced">Email Bounced</option>
+			<option value = "Email Link Clicked">Email Link Clicked</option>
+			<option value = "Form Submitted on Website">Form Submitted on Website</option>
+			<option value = "Unreachable">Unreachable</option>
+			<option value = "Unsubscribed">Unsubscribed</option>
+			<option value = "Had a Phone Conversation">Had a Phone Conversation</option>
+			<option value = "Approached upfront">Approached upfront</option>
+			<option value = "View in browser link Clicked">View in browser link Clicked</option>
+			<option value = "Email Received">Email Received</option>
+			<option value = "Email Marked Spam">Email Marked Spam</option>
+			<option value = "Visited Booth in Tradeshow">Visited Booth in Tradeshow</option>
+			<option value = "Resubscribed to emails">Resubscribed to emails</option>
+			<option value = "Others">Others</option>
+		</select>
+            <br>
+            <input type="text" name="Through Recommendation" placeholder="Through Recommendation- Yes or No" required = "required">
+            <br>
+            <label for="Last Notable Activity" class="label">Last Notable Activity:</label>
+		<select name="Last Notable Activity" id="Last Notable Activity" required="required" class="select">
+			<option value = "Modified">Modified</option>
+			<option value = "Email Opened">Email Opened</option>
+			<option value = "SMS Sent">SMS Sent</option>
+			<option value = "Page Visited on Website">Page Visited on Website</option>
+			<option value = "Olark Chat Conversation">Olark Chat Conversation</option>
+			<option value = "Email Link Clicked">Email Link Clicked</option>
+			<option value = "Email Bounced">Email Bounced</option>
+			<option value = "Unsubscribed">Unsubscribed</option>
+			<option value = "Unreachable">Unreachable</option>
+			<option value = "Had a Phone Conversation">Had a Phone Conversation</option>
+			<option value = "Email Marked Spam">Email Marked Spam</option>
+			<option value = "Approached upfront">Approached upfront</option>
+			<option value = "Resubscribed to emails">Resubscribed to emails</option>
+			<option value = "View in browser link Clicked">View in browser link Clicked</option>
+			<option value = "Form Submitted on Website">Form Submitted on Website</option>
+			<option value = "Email Received">Email Received</option>
+			<option value = "Others">Others</option>
+		</select>
+            <br>
+            <h3>Predict Whether Lead Will be Converted or Not</h3>
+            <input type="submit" value="predict">
+        </form>
+	<br>
+	<br>
+	{{ prediction_text }}
+    </div>
+</body>
+
+</html>
